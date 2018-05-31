@@ -1,0 +1,8 @@
+{
+  "generator-react-electron": {
+    "promptValues": {
+      "author": "Mike Tamis",
+      "token": "1234"
+    }
+  }
+}
