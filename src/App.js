@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider, Query } from "react-apollo";
+import PostFrame from './PostFrame'
 
 const client = new ApolloClient({
   uri: "http://localhost:4000"
@@ -16,8 +17,9 @@ const TestComponent = () => (
     <Query
       query={gql`
         {
-          user(id: "cjhu7u16bo3q60a784uh1zxp4") {
-            id
+          posts {
+            title
+            url
           }
         }
       `}
@@ -25,7 +27,7 @@ const TestComponent = () => (
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error :(</p>;
-        return JSON.stringify(data)
+        return <PostFrame posts={data.posts} />
        }}
     </Query>
   );
